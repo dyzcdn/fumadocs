@@ -1,6 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "pnpm_bin=$(cd /tmp && npx --yes --package 'pnpm@>=12.3.4' --call 'command -v pnpm') && \"$pnpm_bin\" run build",
   "installCommand": "pnpm_bin=$(cd /tmp && npx --yes --package 'pnpm@>=12.3.4' --call 'command -v pnpm') && \"$pnpm_bin\" install --no-frozen-lockfile"
 }
-  "installCommand": "pnpm_bin=$(cd /tmp && npx --yes --package 'pnpm@>=12.3.4' --call 'command -v pnpm') && \"$pnpm_bin\" install --no-frozen-lockfile",
-  "buildCommand": "pnpm_bin=$(cd /tmp && npx --yes --package 'pnpm@>=12.3.4' --call 'command -v pnpm') && \"$pnpm_bin\" run build"
