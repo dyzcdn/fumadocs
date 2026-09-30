@@ -1,4 +1,4 @@
-import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+import { google } from '@ai-sdk/google';
 import {
   convertToModelMessages,
   createUIMessageStreamResponse,
@@ -58,10 +58,6 @@ async function chunkedAll<O>(promises: Promise<O>[]): Promise<O[]> {
   return out;
 }
 
-const openrouter = createOpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-});
-
 /** System prompt, you can update it to provide more specific information */
 const systemPrompt = [
   'You are an AI assistant for a documentation site.',
@@ -74,7 +70,7 @@ export async function POST(req: Request, ctx: RouteContext<"/api/chat">) {
   const reqJson = await req.json();
 
   const result = streamText({
-    model: openrouter.chat(process.env.OPENROUTER_MODEL ?? 'anthropic/claude-3.5-sonnet'),
+    model: google(process.env.GOOGLE_GENERATIVE_AI_MODEL ?? 'gemini-2.5-flash'),
     stopWhen: stepCountIs(5),
     tools: {
       search: searchTool,
